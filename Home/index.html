@@ -96,16 +96,13 @@
 
 
 
-
-
-
 <canvas id="modelCanvas"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 
 <script>
-  const canvas = document.getElementById("modelCanvas");
+const canvas = document.getElementById("modelCanvas");
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.z = 5;
@@ -113,31 +110,28 @@ camera.position.z = 5;
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-//const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
-//scene.add(ambientLight);
-
-//const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-//directionalLight.position.set(10, 20, 10);
-//directionalLight.castShadow = true;
-//scene.add(directionalLight);
-
-//const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
-//pointLight.position.set(0, 5, 5);
-//scene.add(pointLight);
+// Soft ambient light only
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+scene.add(ambientLight);
 
 const loader = new THREE.GLTFLoader();
 let model;
 
 loader.load('model.glb', (gltf) => {
   model = gltf.scene;
- model.traverse((child) => {
+
+  model.traverse((child) => {
     if (child.isMesh) {
-      // Replace any existing material with a flat, unlit color
-      child.material = new THREE.MeshBasicMaterial({
-        color: '#e1c7ab'
+      const oldMat = child.material;
+      child.material = new THREE.MeshStandardMaterial({
+        color: '#f7d2b4',
+        map: oldMat.map || null,             // Keep texture
+        roughness: 1,                        // Matte surface
+        metalness: 0
       });
     }
   });
+
   model.scale.set(2, 2, 3);
   scene.add(model);
   animate();
@@ -148,16 +142,16 @@ function animate() {
   const time = Date.now() * 0.001;
 
   if (model) {
-  model.rotation.y = -time;
+    model.rotation.y = -time;
 
-  const scrollY = window.scrollY;
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
-  const scrollProgress = Math.min(scrollY / maxScroll, 1);
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const scrollProgress = Math.min(scrollY / maxScroll, 1);
 
-  // Center → right → center motion
-  const xPosition = Math.sin(scrollProgress * 2 * Math.PI) * 5;
-  model.position.x = xPosition;
-}
+    // Move left and right
+    const xPosition = Math.sin(scrollProgress * 2 * Math.PI) * 5;
+    model.position.x = xPosition;
+  }
 
   renderer.render(scene, camera);
 }
@@ -168,7 +162,7 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// Scroll image logic (unchanged)
+// Optional scroll image logic
 const image = document.getElementById("scrollImage");
 let ticking = false;
 
@@ -208,8 +202,8 @@ window.addEventListener('scroll', () => {
 });
 
 updateImageTransform();
-
 </script>
+
 
 
 
@@ -517,21 +511,11 @@ updateImageTransform();
 										<!-- End Section Title -->
 										
 					
-										<p class="text-weight-400 text-gray-extra-dark" style="text-align: justify; text-justify: inter-word;">CJC (Creative Jump Consulting) is not your average marketing agency—we are your creative growth partner. Rooted in Dubai and Riyadh, we are a bold team of thinkers, designers, storytellers, and strategists who transform ordinary brands into unforgettable experiences.
-
-We believe creativity is not just about visuals—it’s about solving business challenges in imaginative, effective ways. From immersive event experiences to breakthrough digital campaigns, we craft tailored solutions that speak to your audience and move your business forward.
-
-With a deep understanding of the Middle Eastern market and a pulse on global trends, we deliver marketing that’s not only beautiful, but smart, strategic, and results-driven. At CJC, we don’t just follow trends—we create them.
-
-Let’s create something extraordinary together.
-</p>
+										<p class="text-weight-400 text-gray-extra-dark" style="text-align: justify; text-justify: inter-word;">CJC (Creative Jump Consulting) is not your average marketing agency—we are your creative growth partner. Rooted in Dubai and Riyadh, we are a bold team of thinkers, designers, storytellers, and strategists who transform ordinary brands into unforgettable experiences.</p>
 									
 
-										<a class="btn btn-medium btn-gray-extra-dark  no-margin-bottom" href="#about" data-uk-scroll="">Crafting unforgettable brand moments through design and digital wizardry.
-
-Imagination, Innovation, Impact
-</a>
-									
+<a class="btn btn-medium btn-gray-extra-dark no-margin-bottom" 
+   href="../about/index.html">Read more</a>									
 									</div>
 									<!-- End Container -->
 									
