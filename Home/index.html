@@ -130,6 +130,13 @@ let model;
 
 loader.load('model.glb', (gltf) => {
   model = gltf.scene;
+  model.traverse((child) => {
+  if (child.isMesh) {
+    if (child.material && child.material.color) {
+      child.material.color.set('#f7d2b4');
+    }
+  }
+});
   model.scale.set(2, 2, 3);
   scene.add(model);
   animate();
