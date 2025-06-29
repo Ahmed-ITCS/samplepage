@@ -81,6 +81,18 @@
     transform: rotate(360deg);
   }
 }
+.full-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../background.jpg'); /* 🔁 Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Push behind other content */
+}
   </style>
 	</head>
 	<!-- End Head -->
@@ -90,6 +102,7 @@
 	<!-- Main Body -->
 	<body>
 
+<div class="full-bg">
 
 
 
@@ -506,8 +519,7 @@ updateImageTransform();
 <h1 class="text-weight-800 title-large text-gray-extra-dark no-margin-bottom" style="font-family: 'Butler', serif;">About.</h1>
 									
 
-										<h6 class="text-gray-extra-dark no-margin-bottom" style="font-family: 'Butler', serif;">Who are we and</h6>
-										<h6 class="text-gray-extra-dark text-gold" style="font-family: 'Butler', serif;" >what do we do?</h6>
+										<h6 class="text-gray-extra-dark no-margin-bottom" style="font-family: 'Butler', serif;">Who are we</h6>
 										<!-- End Section Title -->
 										
 					
@@ -2179,7 +2191,7 @@ updateImageTransform();
 		<!-- Custom Scripts -->
 		<script src="js/custom.js"></script>
 
-		
+		</div>
 		
 	
 
