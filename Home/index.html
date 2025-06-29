@@ -87,11 +87,11 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../background.jpg'); /* 🔁 Replace with your image path */
+  background-image: url('../background.jpg'); /* Your path */
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1; /* Push behind other content */
+  background-repeat: no-repeat;	
+  z-index: 0;
 }
   </style>
 	</head>
@@ -102,7 +102,7 @@
 	<!-- Main Body -->
 	<body>
 
-<div class="full-bg">
+<div class="full-bg"></div>
 
 
 
@@ -130,7 +130,7 @@ scene.add(ambientLight);
 const loader = new THREE.GLTFLoader();
 let model;
 
-loader.load('model.glb', (gltf) => {
+loader.load('mmodel.glb', (gltf) => {
   model = gltf.scene;
 
   model.traverse((child) => {
@@ -2190,9 +2190,6 @@ updateImageTransform();
 		
 		<!-- Custom Scripts -->
 		<script src="js/custom.js"></script>
-
-		</div>
-		
 	
 
 </body></html>
