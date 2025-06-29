@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3D Scroll Viewer</title>
+
+</head>
+<body>
+
+<canvas id="modelCanvas"></canvas>
+
+<div class="background-wrapper">
+  <div class="rotation-wrapper">
+    <div class="axis-rotator">
+      <img src="what.jpeg" alt="Rotating Background" class="rotating-image" id="scrollImage" />
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+  const canvas = document.getElementById("modelCanvas");
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 5;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+  scene.add(ambientLight);
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+  directionalLight.position.set(10, 20, 10);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+
+  const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
+  pointLight.position.set(0, 5, 5);
+  scene.add(pointLight);
+
+  const loader = new THREE.GLTFLoader();
+  let model;
+
+  loader.load('tripo_pbr_model_ba56e157-94e8-48d3-a86c-240633d902ac.glb', (gltf) => {
+    model = gltf.scene;
+    model.scale.set(2, 2, 3);
+    scene.add(model);
+    animate();
+  });
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const time = Date.now() * 0.001;
+    if (model) {
+      model.rotation.y = -time;
+    }
+    renderer.render(scene, camera);
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  const image = document.getElementById("scrollImage");
+  let ticking = false;
+
+  function updateImageTransform() {
+    const scrollY = window.scrollY;
+    const currentTime = Date.now() * 0.001;
+    const clockwiseRotation = (currentTime * 18) % 360;
+    const axisRotation = (currentTime * 6) % 360;
+    const translateY = scrollY * 0.2;
+    const rotateY = (scrollY * 0.5) % 360;
+    const rotateZ = (scrollY * 0.3) % 360;
+    const scale = 1 + 0.15 * Math.sin(scrollY * 0.005);
+    const rotateX = (scrollY * 0.1) % 360;
+
+    if (image) {
+      image.style.transform = `
+        translateY(${translateY}px)
+        rotate(${axisRotation}deg)
+        translateX(100px)
+        rotate(${clockwiseRotation}deg)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        rotateZ(${rotateZ}deg)
+        scaleX(${scale})
+        scaleY(${scale * 0.9})
+      `;
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateImageTransform);
+      ticking = true;
+    }
+  });
+
+  updateImageTransform();
+</script>
+
+</body>
+</html>

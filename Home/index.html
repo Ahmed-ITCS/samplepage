@@ -1,0 +1,2178 @@
+<!DOCTYPE html><html lang="en" class="no-js"><!-- Start Head --><head>
+	
+	
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="text" content="">
+		<meta name="author" content="">
+		
+		<!-- description -->
+        <meta name="description" content="">
+        <!-- keywords -->
+        <meta name="keywords" content="">
+		
+		
+		<!--Start Title -->
+		<title>Popper - Creative Agency and Startup Portfolio Template</title>
+		<!--End Title -->
+		
+		
+		
+		<!-- Start Favicon -->
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+		<!-- END Favicon -->
+		
+		
+		
+
+		<!-- Uikit Framework -->
+		<link rel="stylesheet" href="css/uikit.min.css">
+		
+		<!-- Bootstrap Framework -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		
+		<!-- Main Stylesheet -->
+		<link rel="stylesheet" href="css/style.css">
+		
+		<!-- Responsive -->
+		<link rel="stylesheet" href="css/responsive.css">
+		
+		<!-- Animate on Scroll -->
+		<link rel="stylesheet" href="css/aos.css">
+		
+		
+		
+		<!--[if lt IE 9]>
+		  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	
+	  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; }
+    .background-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+    .rotating-image {
+      width: 300px;
+      height: auto;
+      position: relative;
+    }
+  </style>
+	</head>
+	<!-- End Head -->
+	
+
+	
+	<!-- Main Body -->
+	<body>
+
+
+
+
+
+
+
+
+
+
+<canvas id="modelCanvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+  const canvas = document.getElementById("modelCanvas");
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+directionalLight.position.set(10, 20, 10);
+directionalLight.castShadow = true;
+scene.add(directionalLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1.2, 100);
+pointLight.position.set(0, 5, 5);
+scene.add(pointLight);
+
+const loader = new THREE.GLTFLoader();
+let model;
+
+loader.load('model.glb', (gltf) => {
+  model = gltf.scene;
+  model.scale.set(2, 2, 3);
+  scene.add(model);
+  animate();
+});
+
+function animate() {
+  requestAnimationFrame(animate);
+  const time = Date.now() * 0.001;
+
+  if (model) {
+  model.rotation.y = -time;
+
+  const scrollY = window.scrollY;
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const scrollProgress = Math.min(scrollY / maxScroll, 1);
+
+  // Center → right → center motion
+  const xPosition = Math.sin(scrollProgress * 2 * Math.PI) * 5;
+  model.position.x = xPosition;
+}
+
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Scroll image logic (unchanged)
+const image = document.getElementById("scrollImage");
+let ticking = false;
+
+function updateImageTransform() {
+  const scrollY = window.scrollY;
+  const currentTime = Date.now() * 0.001;
+  const clockwiseRotation = (currentTime * 18) % 360;
+  const axisRotation = (currentTime * 6) % 360;
+  const translateY = scrollY * 0.2;
+  const rotateY = (scrollY * 0.5) % 360;
+  const rotateZ = (scrollY * 0.3) % 360;
+  const scale = 1 + 0.15 * Math.sin(scrollY * 0.005);
+  const rotateX = (scrollY * 0.1) % 360;
+
+  if (image) {
+    image.style.transform = `
+      translateY(${translateY}px)
+      rotate(${axisRotation}deg)
+      translateX(100px)
+      rotate(${clockwiseRotation}deg)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      rotateZ(${rotateZ}deg)
+      scaleX(${scale})
+      scaleY(${scale * 0.9})
+    `;
+  }
+
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(updateImageTransform);
+    ticking = true;
+  }
+});
+
+updateImageTransform();
+
+</script>
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+		<!-- Return to top icon -->
+		<a href="#" class="opacity-hover" id="return-to-top" data-uk-scroll=""><span data-uk-icon="icon: arrow-up; ratio: 1.3" class="text-gold"></span></a>
+
+		<a href="#" class="navigation-button opacity-hover" data-uk-toggle="target: #offcanvas-nav"><span data-uk-icon="icon: menu; ratio: 1.3" class="text-gold"></span></a>
+		
+		<!-- Loading Screen -->
+		<div id="loader-wrapper">
+			
+			<!-- Loading Image -->
+			<div class="loader-img"><img src="images/loading-screen.gif" alt=""></div>
+			<!-- END Loading Image -->
+			
+			
+			<!-- Loading Screen Split -->
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+			<!-- End Loading Screen Split -->
+			
+		</div> 
+		<!-- End Loading Screen -->
+		
+		
+		<!-- Home -->
+		<div class="uk-position-relative uk-visible-toggle" data-uk-slider="finite: true">
+
+			<!-- Container -->
+			<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small" data-uk-height-viewport="">
+
+				
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden">
+					
+
+					<div class="uk-position-cover">
+					
+						<!-- Home Content -->
+						<div class="uk-position-center text-right sm-text-center">
+						
+							<div class="width-80 margin-right-auto sm-margin-left-right-auto">
+			
+								<!-- Titles -->
+								<h1 class="text-weight-800 title-large text-gray-extra-dark">Turn Simple Ideas Into Extraordinary Reality.</h1>
+								<h6 class="text-gray-regular no-margin-bottom"></h6>
+								<h6 class="text-gray-regular text-gold"></h6>
+								<!-- End Titles -->
+								
+								<!-- Buttons -->
+								<a class="btn btn-medium btn-gold  no-margin-bottom" href="#portfolio" data-uk-scroll="">See my works</a>
+							
+							</div>
+						
+						</div>
+						<!-- End Home Content -->
+						
+					</div>
+					<!-- End Overlay -->
+					
+				</li>
+
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden">
+					
+					<!-- Portrait Image -->
+					<img src="images/bg-02.jpg" alt="" data-uk-cover="">
+	
+				</li>
+
+			</ul>
+
+		</div>
+		<!-- End Home -->
+
+		
+		<!-- Off-Canvas Navigation -->
+		<div id="offcanvas-nav" data-uk-offcanvas="mode: push; overlay: true; esc-close: true; flip: true;">
+		
+			<!-- Off-Canvas Bar -->
+			<div class="uk-offcanvas-bar menu-dark bg-white uk-flex uk-flex-middle">
+			
+				<div>
+
+					<!-- Off-Canvas Links-->
+					<ul class="uk-nav-default uk-nav-parent-icon text-left" data-uk-nav="">
+					
+						
+						<!-- Link -->
+						<li class="margin-bottom-10px">
+						
+							<a href="index.html"><h6 class="text-gray-extra-dark"><span class="text-left text-gray-extra-dark no-margin-bottom text-weight-700">Popper.</span></h6></a>
+
+						</li>
+						<!-- End Link -->
+
+						
+						<!-- Link -->
+						<li class="uk-parent margin-bottom-10px">
+						
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Home <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							
+							<!-- Dropdown -->
+							<ul class="uk-nav-sub">
+
+								<li><a href="index-style-01.html">Homepage Style 01</a></li>
+								<li><a href="index-style-02.html">Homepage Style 02</a></li>
+		
+							</ul>
+							<!-- End Dropdown -->
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
+						<li class="margin-bottom-10px">
+						
+							<a href="../about/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">About</span></a>
+							
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
+						<li class="margin-bottom-10px">
+						
+							<a href="../services/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Services</span></a>
+							
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
+						<li class="uk-parent margin-bottom-10px">
+						
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Portfolio <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							
+							<!-- Dropdown -->
+							<ul class="uk-nav-sub">
+
+								<li><a href="portfolio-style-01-col-4-grid-full-gutter.html">Column 04 Fullwidth Gutter</a></li>
+								<li><a href="portfolio-style-01-col-4-grid-full.html">Column 04 Fullwidth</a></li>
+								<li><a href="portfolio-style-01-col-4-grid-split-gutter.html">Column 04 Split Gutter</a></li>
+								<li><a href="portfolio-style-01-col-4-grid-split.html">Column 04 Split</a></li>
+								<li><a href="portfolio-style-01-col-3-grid-full-gutter.html">Column 03 Fullwidth Gutter</a></li>
+								<li><a href="portfolio-style-01-col-3-grid-full.html">Column 03 Fullwidth</a></li>
+								<li><a href="portfolio-style-01-col-3-grid-split-gutter.html">Column 03 Split Gutter</a></li>
+								<li><a href="portfolio-style-01-col-3-grid-split.html">Column 03 Split</a></li>
+								<li><a href="project-style-01.html">Full Project</a></li>
+		
+							</ul>
+							<!-- End Dropdown -->
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
+						<li class="uk-parent margin-bottom-10px">
+						
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Pages <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							
+							<!-- Dropdown -->
+							<ul class="uk-nav-sub">
+
+								<li><a class="text-gray-extra-dark text-small" href="page-about.html">About</a></li>
+								<li><a class="text-gray-extra-dark text-small" href="page-services.html">Services</a></li>
+								<li><a class="text-gray-extra-dark text-small" href="page-gallery.html">Gallery</a></li>
+								<li><a class="text-gray-extra-dark text-small" href="page-pricing.html">Pricing</a></li>
+								<li><a class="text-gray-extra-dark text-small" href="page-contact.html">Contact</a></li>
+		
+							</ul>
+							<!-- End Dropdown -->
+							
+						</li>
+						<!-- End Link -->
+
+						<!-- Link -->
+						<li class="margin-bottom-10px">
+						
+							<a href="../pricing/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Pricing</span></a>
+							
+							
+						</li>
+						<!-- End Link -->
+
+						<!-- Link -->
+						<li class="uk-parent margin-bottom-10px">
+						
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Blog <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							
+							<!-- Dropdown -->
+							<ul class="uk-nav-sub">
+
+								<li><a href="blog.html">Blog Posts</a></li>
+								<li><a href="blog-post.html">Full Post</a></li>
+								<li><a href="blog-post-no-sidebar.html">Full Post no sidebar</a></li>
+		
+							</ul>
+							<!-- End Dropdown -->
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
+						<li class="margin-bottom-10px">
+						
+							<a href="../contact/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Contact</span></a>
+
+						</li>
+						<!-- End Link -->
+						
+
+					</ul>
+					<!-- End Off-Canvas Links -->
+
+					<!-- Navigation Footer -->
+					<div class="nav-footer margin-top-75px">
+
+						<!-- Social Links for Off-Canvas Footer -->
+						<ul class="list-unstyled no-margin-bottom margin-top-20px">
+						
+							<li class="display-inline-block margin-right-25px"><a href="#"><i class="fab fa-facebook facebook"></i></a></li>
+							<li class="display-inline-block margin-right-25px"><a href="#"><i class="fab fa-twitter twitter"></i></a></li>
+							<li class="display-inline-block margin-right-25px"><a href="#"><i class="fab fa-instagram instagram"></i></a></li>
+							<li class="display-inline-block"><a href="#"><i class="fab fa-behance behance"></i></a></li>
+
+						</ul>
+						<!-- End Social Links for Off-Canvas Footer -->
+
+						<!-- Copyright Information -->
+						<p class="no-margin-bottom margin-top-20px text-small text-gray-extra-dark text-weight-400">Copyright © 2020 of <a href="https://www.templatemilk.com" target="_blank">templatemilk.</a></p>
+						<p class="no-margin-bottom text-small text-gray-extra-dark text-weight-400 text-black">All rights reserved.</p>
+						<!-- End Copyright Information -->
+				
+					</div>
+					<!-- End Navigation Footer -->
+
+				</div>
+			
+			</div>
+			<!-- End Off-Canvas Bar -->
+			
+		</div>
+		<!-- End Off-Canvas Navigation -->
+
+
+		<!-- About -->
+		<div id="about" class="uk-position-relative uk-visible-toggle bg-gold-transparent" data-uk-slider="finite: true">
+
+			<!-- Container -->
+			<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small" data-uk-height-viewport="">
+
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden">
+					
+					<!-- Portrait Image -->
+					<img src="images/02.jpg" alt="" data-uk-cover="">
+	
+				</li>
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden bg-gold">
+					
+
+					<div class="uk-position-cover">
+					
+						<!-- About Content -->
+						<div class="uk-position-center text-left">
+						
+							<!-- Row -->
+							<div class="row">
+								
+								<!-- Column -->
+								<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 center-col text-left">
+								
+									<!-- Container -->
+									<div class="sm-container-spread">
+					
+		
+										<h1 class="text-weight-800 title-large text-gray-extra-dark no-margin-bottom">About.</h1>
+									
+
+										<h6 class="text-gray-extra-dark no-margin-bottom">Who are we and</h6>
+										<h6 class="text-gray-extra-dark text-gold">what do we do?</h6>
+										<!-- End Section Title -->
+										
+					
+										<p class="text-weight-400 text-gray-extra-dark" style="text-align: justify; text-justify: inter-word;">CJC (Creative Jump Consulting) is not your average marketing agency—we are your creative growth partner. Rooted in Dubai and Riyadh, we are a bold team of thinkers, designers, storytellers, and strategists who transform ordinary brands into unforgettable experiences.
+
+We believe creativity is not just about visuals—it’s about solving business challenges in imaginative, effective ways. From immersive event experiences to breakthrough digital campaigns, we craft tailored solutions that speak to your audience and move your business forward.
+
+With a deep understanding of the Middle Eastern market and a pulse on global trends, we deliver marketing that’s not only beautiful, but smart, strategic, and results-driven. At CJC, we don’t just follow trends—we create them.
+
+Let’s create something extraordinary together.
+</p>
+									
+
+										<a class="btn btn-medium btn-gray-extra-dark  no-margin-bottom" href="#about" data-uk-scroll="">Crafting unforgettable brand moments through design and digital wizardry.
+
+Imagination, Innovation, Impact
+</a>
+									
+									</div>
+									<!-- End Container -->
+									
+								</div>
+								<!-- End Column -->
+							
+							</div>
+							<!-- End Row -->
+							
+						</div>
+						<!-- End About Content -->
+						
+					</div>
+					<!-- End Overlay -->
+					
+				</li>
+				
+			
+				
+			</ul>
+
+		</div>
+		<!-- End About -->
+		
+		
+		<!-- Services -->
+		<div id="services" class="padding-top-bottom-150px">
+		
+			<!-- Container -->
+			<div class="container xs-container-spread">
+			
+				<!-- Row -->
+				<div class="row">
+				
+					<!-- Section Title -->
+					<div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-auto">
+		
+						<h1 class="text-weight-800 title-large no-margin-bottom text-gray-extra-dark">Services.</h1>
+	
+						<h6 class="text-center text-gray-regular no-margin-bottom">Lorem impsum dolor simet</h6>
+						<h6 class="text-center text-gray-regular">random text from web.</h6>
+
+						
+					</div>
+					<!-- End Section Title -->
+				
+				</div>
+				<!-- End Row -->
+				
+				
+				<!-- Animation -->
+				<div class="margin-top-75px">
+				
+					<!-- Row -->
+					<div class="row">
+
+						<!-- Column -->
+						<div class="col-md-3 col-sm-6 col-xs-12 sm-margin-bottom-75px text-center">
+							
+							<span class="text-gold" data-uk-icon="icon: desktop; ratio: 2"></span>
+							
+							<h6 class="text-center text-gray-extra-dark margin-top-25px">Web Design</h6>
+							
+							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+
+							
+						</div>
+						<!-- End Column -->
+						
+						<!-- Column -->
+						<div class="col-md-3 col-sm-6 col-xs-12 sm-margin-bottom-75px text-center">
+							
+							<span class="text-gold" data-uk-icon="icon: camera; ratio: 2"></span>
+							
+							<h6 class="text-center text-gray-extra-dark margin-top-25px">App Design</h6>
+							
+							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+
+						</div>
+						<!-- End Column -->
+						
+						<!-- Column -->
+						<div class="col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-75px text-center">
+							
+							<span class="text-gold" data-uk-icon="icon: bolt; ratio: 2"></span>
+							
+							<h6 class="text-center text-gray-extra-dark margin-top-25px">iOS Design</h6>
+							
+							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+
+							
+						</div>
+						<!-- End Column -->
+						
+						<!-- Column -->
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+							
+							<span class="text-gold" data-uk-icon="icon: image; ratio: 2"></span>
+							
+							<h6 class="text-center text-gray-extra-dark margin-top-25px">Photography</h6>
+							
+							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+
+							
+						</div>
+						<!-- End Column -->
+						
+					</div>
+					<!-- End Row -->
+					
+				</div>
+				<!-- End Animation -->
+				
+			</div>
+			<!-- End Container -->
+
+		</div>
+		<!-- End Services-->
+
+
+		
+		<!-- Call to Action -->
+		<div class="uk-position-relative uk-visible-toggle bg-gold-transparent" data-uk-slider="finite: true">
+
+			<!-- Container -->
+			<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small" data-uk-height-viewport="">
+
+
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden bg-gray-transparent">
+					
+
+					<div class="uk-position-cover">
+					
+						<!-- About Content -->
+						<div class="uk-position-center text-left">
+						
+							<!-- Row -->
+							<div class="row">
+								
+								<!-- Column -->
+								<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 center-col text-left md-text-center">
+								
+									<!-- Container -->
+									<div class="sm-container-spread">
+					
+		
+										<h1 class="text-weight-800 title-large text-gray-extra-dark">Over 8 years of experience.</h1>
+
+										<p class="text-weight-400 text-gray-extra-dark">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupid. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor atat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									
+
+										<a class="btn btn-medium btn-gray-extra-dark  no-margin-bottom" href="#about" data-uk-scroll="">Read More</a>
+									
+									</div>
+									<!-- End Container -->
+									
+								</div>
+								<!-- End Column -->
+							
+							</div>
+							<!-- End Row -->
+							
+						</div>
+						<!-- End About Content -->
+						
+					</div>
+					<!-- End Overlay -->
+					
+				</li>
+				
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden bg-black">
+					
+
+					<div class="uk-position-cover">
+					
+						<!-- About Content -->
+						<div class="uk-position-center text-left">
+						
+							<!-- Row -->
+							<div class="row">
+								
+								<!-- Column -->
+								<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 center-col text-left">
+								
+									<!-- Container -->
+									<div class="sm-container-spread">
+					
+		
+										<h1 class="text-weight-800 title-large text-gray-light">Multiple award winners.</h1>
+										
+					
+										<p class="text-weight-400 text-gray-regular">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									
+
+										<a class="btn btn-medium btn-gold  no-margin-bottom" href="#about" data-uk-scroll="">Read More</a>
+									
+									</div>
+									<!-- End Container -->
+									
+								</div>
+								<!-- End Column -->
+							
+							</div>
+							<!-- End Row -->
+							
+						</div>
+						<!-- End About Content -->
+						
+					</div>
+					<!-- End Overlay -->
+					
+				</li>
+				
+			
+				
+			</ul>
+
+		</div>
+		<!-- End Call to Action -->
+
+		
+		<!-- Portfolio -->
+		<div id="portfolio" class="padding-top-bottom-150px">
+			
+			
+			<!-- Container -->
+			<div class="container sm-container-spread">
+				
+				<!-- Row -->
+				<div class="row margin-bottom-75px">
+				
+					<!-- Section Title -->
+					<div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-auto">
+		
+						<h1 class="text-weight-800 title-large no-margin-bottom text-gray-extra-dark">Portfolio.</h1>
+	
+						<h6 class="text-center text-gray-regular no-margin-bottom">Lorem impsum dolor simet</h6>
+						<h6 class="text-center text-gray-regular no-margin-bottom">random text from web.</h6>
+
+						
+					</div>
+					<!-- End Section Title -->
+				
+				</div>
+				<!-- End Row -->
+				
+				<!-- Portfolio Grid -->
+				<div data-uk-filter="target: .works">
+
+				
+					<!-- Container -->
+					<div class="container">
+
+						<!-- Filter -->
+						<ul class="uk-subnav filter-style-2">
+						
+							<li class="uk-active" data-uk-filter-control=""><a href="#">All</a></li>
+							<li data-uk-filter-control="filter: .images"><a href="#">Images</a></li>
+							<li data-uk-filter-control="filter: .videos"><a href="#">Videos</a></li>
+							<li data-uk-filter-control="filter: .projects"><a href="#">Projects</a></li>
+							
+						</ul>
+						<!-- End Filter -->
+					
+					</div>
+					
+					
+					<!-- Work -->
+					<div data-uk-lightbox="animation: fade; delay-controls: 999999999">
+						
+						<div class="works uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-text-center uk-grid-small" data-uk-grid="">
+						
+							<!-- Work -->
+							<div class="images">
+							
+								<a href="images/works/01.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/01.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Bolton</h6>
+
+			
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							<!-- Work -->
+							<div class="videos">
+							
+								<a href="https://www.templatemilk.com/presentations/videos/01.mp4" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/02_1.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Ofcord</h6>
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+								<!-- End Work -->
+							
+							</div>
+							
+							
+							<!-- Work -->
+							<div class="projects">
+							
+								<a href="project-style-01.html" class="uk-inline-clip uk-transition-toggle" tabindex="0">
+									
+									<!-- Image -->
+									<img src="images/03.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Policies</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+								
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							
+							<!-- Work -->
+							<div class="videos">
+							
+								<a href="https://www.templatemilk.com/presentations/videos/01.mp4" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/06.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Quria</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+								<!-- End Work -->
+							
+							</div>
+							
+							
+							<!-- Work -->
+							<div class="projects">
+							
+								<a href="project-style-01.html" class="uk-inline-clip uk-transition-toggle" tabindex="0">
+									
+									<!-- Image -->
+									<img src="images/04.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Period</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+								
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							<!-- Work -->
+							<div class="images">
+							
+								<a href="images/works/18.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/18.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Agents</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							
+							<!-- Work -->
+							<div class="images">
+							
+								<a href="images/works/07.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/07.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Basics</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							<!-- Work -->
+							<div class="videos">
+							
+								<a href="https://www.templatemilk.com/presentations/videos/02.mp4" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/09.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Flowra</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+								<!-- End Work -->
+							
+							</div>
+							
+							
+							<!-- Work -->
+							<div class="projects">
+
+								<a href="project-style-01.html" class="projects uk-inline-clip uk-transition-toggle" tabindex="0">
+									
+									<!-- Image -->
+									<img src="images/08.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Premium</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+
+								</a>
+								<!-- End Hover -->
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							<!-- Work -->
+							<div class="images">
+							
+								<a href="images/works/13.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/13.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Ninara</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+							
+							</div>
+							<!-- End Work -->
+							
+							
+							<!-- Work -->
+							<div class="videos">
+							
+								<a href="https://www.templatemilk.com/presentations/videos/02.mp4" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+									
+									<!-- Image -->
+									<img src="images/15.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Jabbo</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+									
+								</a>
+								<!-- End Work -->
+							
+							</div>
+							
+							
+							<!-- Work -->
+							<div class="projects">
+
+								<a href="project-style-01.html" class="projects uk-inline-clip uk-transition-toggle" tabindex="0">
+									
+									<!-- Image -->
+									<img src="images/16.jpg" alt="">
+									
+									<!-- Hover -->
+									<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+									
+										<div class="uk-position-center width-50 margin-auto text-center">
+									
+											<h6 class="text-gray-extra-dark">Basics</h6>
+
+											
+											
+											
+											<p class="no-margin-bottom text-weight-400">Here is an overview of all currently available work.</p>
+										
+										</div>
+										
+									</div>
+									<!-- End Hover -->
+
+								</a>
+								<!-- End Hover -->
+							
+							</div>
+							<!-- End Work -->
+
+						</div>
+						
+					</div>
+
+				</div>
+
+			</div>
+			<!-- End Container -->
+
+		</div>
+		<!-- End Portfolio -->
+		
+		
+		
+		<!-- Facts -->
+		<div id="facts" class="bg-gray-transparent padding-top-bottom-150px">
+		
+			<!-- Row -->
+			<div class="row">
+				
+				<!-- Column -->
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 uk-flex uk-flex-middle">
+					
+					<!-- Container -->
+					<div class="container-small sm-container-spread">
+					
+						<!-- Row -->
+						<div class="row">
+						
+							<!-- Column -->
+							<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-75px">
+								
+								<!-- Counter -->
+								<div class="counter text-center">
+
+
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="444">0</h1>
+									
+									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: thumbnails; ratio: 2"></span>
+									
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Projects</h6>
+									
+								</div>
+								<!-- End Counter -->
+							
+							</div>
+							<!-- End Column -->
+							
+							
+							<!-- Column -->
+							<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-75px">
+								
+								<!-- Counter -->
+								<div class="counter text-center">
+						
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="379">0</h1>
+									
+									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: user; ratio: 2"></span>
+									
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Clients</h6>
+									
+								</div>
+								<!-- End Counter -->
+							
+							</div>
+							<!-- End Column -->
+							
+							
+							<!-- Column -->
+							<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col sm-margin-bottom-75px">
+								
+								<!-- Counter -->
+								<div class="counter text-center">
+						
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="235">0</h1>
+									
+									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: image; ratio: 2"></span>
+									
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Designs</h6>
+									
+								</div>
+								<!-- End Counter -->
+							
+							</div>
+							<!-- End Column -->
+							
+							
+							<!-- Column -->
+							<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col">
+								
+								<!-- Counter -->
+								<div class="counter text-center">
+						
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="20">0</h1>
+									
+									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: star; ratio: 2"></span>
+									
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Awards</h6>
+									
+								</div>
+								<!-- End Counter -->
+							
+							</div>
+							<!-- End Column -->
+							
+						</div>
+						<!-- End Row -->
+
+					</div>
+					<!-- End Container -->
+
+				</div>
+				<!-- End Column -->
+				
+
+			</div>
+			<!-- End Row -->
+			
+		</div>
+		<!-- End Facts -->
+		
+		<!-- Clients -->
+		<div class="padding-top-bottom-150px bg-gold sm-no-padding-left sm-no-padding-right">
+		
+
+			<!-- Row -->
+			<div class="row">
+				
+				<!-- Column -->
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					
+					<!-- Container -->
+					<div class="container-small sm-container-spread">
+					
+						<!-- Row -->
+						<div class="row">
+						
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
+							
+								<img class="opacity-8 width-70 md-margin-left-right-auto" src="images/01.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/02.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
+							
+								<img class="opacity-8 width-70 md-margin-left-right-auto" src="images/01.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/02.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/03.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/05.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col sm-margin-bottom-75px">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/06.png" alt="">
+							
+							</div>
+							
+							<div class="col-lg-3 col-md-6 col-sm-12 center-col">
+							
+								<img class="width-70 md-margin-left-right-auto" src="images/04.png" alt="">
+							
+							</div>
+						
+						</div>
+						<!-- End Row -->
+
+					</div>
+					<!-- End Container -->
+
+				</div>
+				<!-- End Column -->
+				
+
+			</div>
+			<!-- End Row -->
+	
+		</div>
+		<!-- End Clients -->
+		
+		
+		<!-- Pricing Table -->
+		<div id="pricing" class="padding-top-bottom-150px">
+			
+			
+			<!-- Container -->
+			<div class="container sm-container-spread">
+			
+				<!-- Row -->
+				<div class="row margin-bottom-75px">
+				
+					<!-- Section Title -->
+					<div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-auto">
+		
+						<h1 class="text-weight-800 title-large no-margin-bottom text-gray-extra-dark">Pricing.</h1>
+	
+						<h6 class="text-center text-gray-regular no-margin-bottom">Lorem impsum dolor simet</h6>
+						<h6 class="text-center text-gray-regular no-margin-bottom">random text from web.</h6>
+
+						
+					</div>
+					<!-- End Section Title -->
+				
+				</div>
+				<!-- End Row -->
+				
+	
+			</div>
+			<!-- End Container -->
+			
+			
+			<!-- Container -->
+			<div class="container sm-container-spread">
+			
+				<!-- Row -->
+				<div class="row">
+				
+					<!-- Column -->
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 center-col text-center md-margin-bottom-75px">
+						
+						<!-- Pricing Table -->
+						<div class="pricing-table-1 bg-black padding-75px text-center sm-padding-25px">
+							
+							<!-- Pricing Table Title -->
+							<h6 class="text-gray-light text-center no-margin-bottom">Basic.</h6>
+							
+							<!-- Price -->
+							<h6 class="text-gray-regular text-center text-gold">$350.</h6>
+		
+							<!-- Separator -->
+							
+							
+							<!-- Pricing Table Features -->
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span> 10 Pages.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Photoshop.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>15 Photos.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Branding.</p>
+
+							<!-- End Pricing Table Features -->
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold  sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now.</a>
+						
+						</div>
+						<!-- End Pricing Table -->
+						
+					</div>
+					<!-- End Column -->
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 center-col text-center md-margin-bottom-75px">
+					
+						<!-- Pricing Table -->
+						<div class="pricing-table-1 bg-black padding-75px text-center sm-padding-25px">
+							
+							<!-- Pricing Table Title -->
+							<h6 class="text-gray-light text-center no-margin-bottom">Premium.</h6>
+							
+							<!-- Price -->
+							<h6 class="text-gray-regular text-center text-gold">$650.</h6>
+		
+							<!-- Separator -->
+							
+							
+							<!-- Pricing Table Features -->
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span> 10 Pages.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Photoshop.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>15 Photos.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Branding.</p>
+
+							<!-- End Pricing Table Features -->
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold  sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now.</a>
+						
+						
+						</div>
+						<!-- End Pricing Table -->
+						
+					</div>
+					<!-- End Column -->
+					
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 center-col text-center">
+					
+						<!-- Pricing Table -->
+						<div class="pricing-table-1 bg-black padding-75px text-center sm-padding-25px">
+							
+							<!-- Pricing Table Title -->
+							<h6 class="text-gray-light text-center no-margin-bottom">Ultimate.</h6>
+							
+							<!-- Price -->
+							<h6 class="text-gray-regular text-center text-gold">$950.</h6>
+		
+							<!-- Separator -->
+							
+							
+							<!-- Pricing Table Features -->
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span> 10 Pages.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Photoshop.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>15 Photos.</p>
+							<p class="text-center text-gray-light text-weight-400"><span class="text-gray-light margin-right-10px" data-uk-icon="icon: check; ratio: .7"></span>Branding.</p>
+
+							<!-- End Pricing Table Features -->
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold  sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Get it now.</a>
+						
+						
+						</div>
+						<!-- End Pricing Table -->
+						
+					</div>
+					<!-- End Pricing Table -->
+
+				</div>
+				<!-- End Row -->
+
+			</div>
+			<!-- End Container -->
+
+		</div>
+		<!-- End Pricing Table  -->
+		
+		
+		
+		<!-- Blog -->
+		<div id="blog" class="padding-top-bottom-150px bg-gray-transparent">
+			
+			<!-- Container -->
+			<div class="container sm-container-spread">
+			
+				<!-- Row -->
+				<div class="row margin-bottom-75px">
+				
+					<!-- Section Title -->
+					<div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-auto">
+		
+						<h1 class="text-weight-800 title-large no-margin-bottom text-gray-extra-dark">Blog.</h1>
+	
+						<h6 class="text-center text-gray-regular no-margin-bottom">Lorem impsum dolor simet</h6>
+						<h6 class="text-center text-gray-regular no-margin-bottom">random text from web.</h6>
+
+						
+					</div>
+					<!-- End Section Title -->
+				
+				</div>
+				<!-- End Row -->
+
+			</div>
+			<!-- End Container -->
+			
+			
+			
+			<!-- Container -->
+			<div class="container sm-container-spread">
+			
+				<!-- Row -->
+				<div class="row">
+				
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 margin-bottom-75px">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+						
+
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/01.jpg" alt=""></a>
+			
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">How to become an app developer.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">Tools</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">John Pool</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 margin-bottom-75px">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+						
+			
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/02_1.jpg" alt=""></a>
+						
+				
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">Get started with template milk.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">News</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">Ron Will</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 margin-bottom-75px">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+						
+			
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/03.jpg" alt=""></a>
+						
+
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">Find what you love & let it kill you.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">News</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">Ron Will</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 md-margin-bottom-75px">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/09.jpg" alt=""></a>
+
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">How to become an app developer.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">Tools</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">John Pool</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 sm-margin-bottom-75px">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+				
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/05.jpg" alt=""></a>
+						
+			
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">Get started with template milk.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">News</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">Ron Will</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+					
+					<!-- Column -->
+					<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+					
+						<!-- Blog -->
+						<div class="blog-style-1 text-left">
+						
+	
+							<!-- Blog Post Image -->
+							<a href="blog-post-sidebar-right.html"><img src="images/06.jpg" alt=""></a>
+						
+					
+							<!-- Blog Title -->
+							<h6 class="text-gray-regular margin-top-25px"><a href="blog-post-sidebar-right.html">Find what you love & let it kill you.</a></h6>
+							
+							<p class="text-gray-extra-dark text-weight-400">in <a href="#">News</a><span class="text-gray-extra-dark margin-left-right-10px" data-uk-icon="icon: chevron-right; ratio: 1"></span> by <a href="#">Ron Will</a></p>
+							
+							<!-- Button -->
+							<a class="btn btn-medium btn-gold border-radius-50 sm-display-table no-margin-bottom" href="blog-post-sidebar-right.html">Start Reading</a>
+						
+						</div>
+						<!-- End Blog -->
+						
+					</div>
+					<!-- End Column -->
+					
+				</div>
+				<!-- End Row -->
+				
+			</div>
+			<!-- End Container -->
+			
+		</div>
+		<!-- End Blog -->
+		
+
+		<!-- Call to action -->
+		<div class="uk-position-relative uk-visible-toggle" data-uk-slider="finite: true">
+
+			<!-- Container -->
+			<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small" data-uk-height-viewport="">
+
+
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden">
+					
+					<!-- Portrait Image -->
+					<img src="images/01_1.jpg" alt="" data-uk-cover="">
+	
+				</li>
+				
+				
+				<li class="uk-transition-toggle uk-animation-toggle overflow-hidden bg-black">
+					
+
+					<div class="uk-position-cover">
+					
+						<!-- About Content -->
+						<div class="uk-position-center text-left">
+						
+							<!-- Row -->
+							<div class="row">
+								
+								<!-- Column -->
+								<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 center-col text-left">
+								
+									<!-- Container -->
+									<div class="sm-container-spread">
+					
+		
+										<h1 class="text-weight-800 title-large text-gray-light">Ready to take your project.</h1>
+
+										<p class="text-weight-400 text-gray-regular">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupid. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor atat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+									
+
+										<a class="btn btn-medium btn-gold no-margin-bottom" href="#about" data-uk-scroll="">Read More</a>
+									
+									</div>
+									<!-- End Container -->
+									
+								</div>
+								<!-- End Column -->
+							
+							</div>
+							<!-- End Row -->
+							
+						</div>
+						<!-- End About Content -->
+						
+					</div>
+					<!-- End Overlay -->
+					
+				</li>
+				
+				
+		
+				
+			</ul>
+
+		</div>
+		<!-- End Call to action -->
+		
+
+		<!-- Contact -->
+		<div id="contact" class="bg-gray-transparent padding-top-bottom-150px">
+		
+			<!-- Container -->
+			<div class="container">
+			
+				<!-- Row -->
+				<div class="row margin-bottom-75px">
+				
+					<!-- Section Title -->
+					<div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-auto">
+		
+						<h1 class="text-weight-800 title-large no-margin-bottom text-gray-extra-dark">Contact.</h1>
+	
+						<h6 class="text-center text-gray-regular no-margin-bottom">Lorem impsum dolor simet</h6>
+						<h6 class="text-center text-gray-regular no-margin-bottom">random text from web.</h6>
+
+						
+					</div>
+					<!-- End Section Title -->
+				
+				</div>
+				<!-- End Row -->
+				
+				
+				<!-- Row -->
+				<div class="row">
+
+					<!-- Column -->
+					<div class="col-md-8 col-sm-12 col-xs-12 center-col text-center margin-auto">
+					
+						<!-- Contact Container -->
+						<div class="container contact-wrapper">
+	
+							<!-- Form Container -->
+							<form class="contact-form text-left" method="post" action="contact.php">
+							
+								<!-- Messages For The User -->
+								<div class="messages"></div>
+
+								<!-- Form Controls -->
+								<div class="controls">
+
+									<!-- Row -->
+									<div class="row">
+									
+										<!-- Column -->
+										<div class="col-md-6 col-sm-12 col-xs-12">
+										
+											<!-- Form Group -->
+											<div class="form-group">
+
+												<p class="text-weight-400 text-gray-extra-dark margin-bottom-10px">First Name *</p>
+												
+												<!-- Input -->
+												<input class="form-control form_name no-margin-top padding-25px text-gray-extra-dark text-weight-400 bg-transparent border-color-gray-extra-light" type="text" name="name" placeholder="i.e. Jason" required="required" data-error="First name is required.">
+
+												<!-- Error Block -->
+												<div class="help-block with-errors"></div>
+											
+											</div>
+											<!-- End Form Group -->
+											
+										</div>
+										<!-- End Column -->
+										
+							
+										<!-- Column -->
+										<div class="col-md-6">
+										
+											<!-- Form Group -->
+											<div class="form-group">
+											
+												<p class="text-weight-400  text-gray-extra-dark margin-bottom-10px">Last Name *</p>
+												
+												<!-- Input -->
+												<input class="form-control form_name no-margin-top padding-25px text-gray-extra-dark text-weight-400 bg-transparent border-color-gray-extra-light" type="text" name="name" placeholder="i.e. Statham" required="required" data-error="Last name is required.">
+
+												<!-- Error Block -->
+												<div class="help-block with-errors"></div>
+												
+											</div>
+											<!-- End Form Group -->
+											
+										</div>
+										<!-- End Column -->
+
+									</div>
+									<!-- End Row -->	
+
+
+									
+									<!-- Row -->
+									<div class="row">
+									
+										<!-- Column -->
+										<div class="col-md-6">
+										
+											<!-- Form Group -->
+											<div class="form-group">
+
+												<p class="text-weight-400  text-gray-extra-dark margin-bottom-10px">E-mail Address *</p>
+												
+												<!-- Input -->
+												<input class="form-control form_name no-margin-top padding-25px text-gray-extra-dark text-weight-400 bg-transparent border-color-gray-extra-light" type="email" name="email" placeholder="i.e. jason@statham.com" required="required" data-error="Valid email is required.">
+												
+												<!-- Error Block -->
+												<div class="help-block with-errors"></div>
+											
+											</div>
+											<!-- End Form Group -->
+											
+										</div>
+										<!-- End Column -->
+										
+										
+									  
+										<!-- Column -->
+										<div class="col-md-6">
+										
+											<!-- Form Group -->
+											<div class="form-group">
+
+												<p class="text-weight-400 text-gray-extra-dark  margin-bottom-10px">Phone Number *</p>
+												
+												<!-- Input -->
+												<input class="form-control form_name no-margin-top padding-25px text-gray-extra-dark text-weight-400 bg-transparent border-color-gray-extra-light" type="tel" name="phone" placeholder="i.e. +1 929 7092 111">
+												
+												<!-- Error Block -->
+												<div class="help-block with-errors"></div>
+												
+											</div>
+											<!-- End Form Group -->
+											
+										</div>
+										<!-- End Column -->
+
+									</div>
+									<!-- End Row -->	
+									
+									
+									
+									
+									
+									<!-- Row -->
+									<div class="row">
+									
+										<!-- Column -->
+										<div class="col-md-12">
+										
+											<!-- Form Group -->
+											<div class="form-group">
+												
+												<p class="text-weight-400  text-gray-extra-dark margin-bottom-20px">Your Number *</p>
+												
+												<!-- Input -->
+												<textarea class="form-control form_message no-margin-top padding-25px text-gray-extra-dark text-weight-400 bg-transparent border-color-gray-extra-light" name="message" placeholder="Start here..." rows="4" required="required" data-error="Please,leave us a message."></textarea>
+												
+												<!-- Error Block -->
+												<div class="help-block with-errors"></div>
+												
+											</div>
+											<!-- End Form Group -->
+											
+										</div>
+										<!-- End Column -->
+									  
+									  
+										<!-- Column -->
+										<div class="col-md-12 text-center">
+										
+											<!-- Input -->
+											<input type="submit" class="btn btn-medium border-radius-50 btn-gold sm-display-table sm-margin-left-right-auto" value="Send Message">
+											
+										</div>
+										<!-- End Column -->
+										
+									</div>
+									<!-- End Row -->
+									
+								</div>
+								<!-- End Form Controls -->
+								
+							</form>
+							<!-- End Form Container -->
+							
+						</div>
+						<!-- End Contact Container -->
+					
+					</div>
+					<!-- End Column -->
+					
+				</div>
+				<!-- End Row -->
+				
+			</div>
+			<!-- End Container -->
+			
+		</div>
+		<!-- End Contact -->
+
+		
+		
+		<!-- Footer -->
+		<footer class="bg-gray-extra-light">
+		
+			
+			<!-- Row -->
+			<div class="row padding-left-right-twelve-percent padding-top-bottom-150px">
+				
+				<!-- Column -->
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col md-margin-bottom-75px sm-text-center">
+				
+					<!-- Logo Image -->
+					<h6 class="text-center text-weight-700 text-gray-extra-dark text-left sm-text-center">Popper.</h6>
+					
+
+					<p class="width-90 md-width-100 text-gray-extra-dark text-weight-400">Stay updated by subscribing to our newsletter. We do not spam or send unimportant stuff.</p>
+					
+					
+					<!-- Form Group -->
+					<div class="form-group">
+					
+						<!-- Input -->
+						<input class="form-control form_lastname bg-transparent no-border-top no-border-left no-border-right border-color-gray-extra-light border-1px padding-10px text-white text-weight-400 width-70 sm-width-100" type="text" name="name" placeholder="Email" required="required" data-error="Lastname is required.">
+						
+					</div>
+					<!-- End Form Group -->
+					
+					<a class="btn btn-medium btn-gold sm-display-table no-margin-bottom sm-margin-left-right-auto" href="#">Subscribe.</a>
+			
+
+				</div>
+				<!-- End Column -->
+				
+
+				<!-- Column -->
+				<div class="col-lg-2 col-md-6 col-sm-12 center-col col-xs-12 md-margin-bottom-75px text-center md-text-left sm-text-center">
+				
+					<!-- Title -->
+					<h6 class="text-center text-gray-extra-dark">Social.</h6>
+					
+
+					<!-- Links -->
+					<ul class="list-unstyled no-margin">
+					
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="facebook position-relative bottom-1 margin-right-10px" data-uk-icon="icon: facebook; ratio: .7"></span> Facebook</a></p></li>
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="instagram position-relative bottom-1 margin-right-10px" data-uk-icon="icon: instagram; ratio: .7"></span> Instagram</a></p></li>
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="pinterest position-relative bottom-1 margin-right-10px" data-uk-icon="icon: pinterest; ratio: .7"></span> Pinterest</a></p></li>
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="behance position-relative bottom-1 margin-right-10px" data-uk-icon="icon: behance; ratio: .7"></span> Behance</a></p></li>
+						<li class="no-margin"><p class="no-margin-bottom text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="youtube position-relative bottom-1 margin-right-10px" data-uk-icon="icon: youtube; ratio: .7"></span> Youtube</a></p></li>
+					
+					</ul>
+					<!-- End Links -->
+					
+				</div>
+				<!-- End Column -->
+				
+			
+				<!-- Column -->
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col sm-text-center sm-margin-bottom-75px">
+				
+				
+					<h6 class="text-left text-gray-extra-dark sm-text-center">Contact.</h6>
+
+					<!-- Text -->
+					
+					
+					<!-- Links -->
+					<ul class="list-unstyled no-margin">
+					
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><span class="text-gray-regular position-relative bottom-1 margin-right-10px" data-uk-icon="icon: location; ratio: .7"></span> 45-50 Bar St. New York</p></li>
+						
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="text-gray-regular position-relative bottom-1 margin-right-10px" data-uk-icon="icon: mail; ratio: .7"></span> brand@domain.com</a></p></li>
+						
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="text-gray-regular position-relative bottom-1 margin-right-10px" data-uk-icon="icon: lifesaver; ratio: .7"></span> support@domain.com</a></p></li>
+						
+						<li class="no-margin"><p class="text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="text-gray-regular position-relative bottom-1 margin-right-10px" data-uk-icon="icon: receiver; ratio: .7"></span> +00 (123) 456 78 90</a></p></li>
+						
+						<li class="no-margin"><p class="no-margin-bottom text-gray-extra-dark text-weight-400"><a class="text-gray-extra-dark" href="#"><span class="text-gray-regular position-relative bottom-1 margin-right-10px" data-uk-icon="icon: file-text; ratio: .7"></span> Sitemap</a></p></li>
+						
+					</ul>
+					<!-- End Links -->
+					
+				</div>
+				<!-- End Column -->
+				
+				
+				<!-- Column -->
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 center-col sm-text-center uk-fiex uk-flex-middle">
+				
+					<!-- Title -->
+					<h6 class="text-left text-gray-extra-dark sm-text-center">Latest Projects.</h6>
+
+					<div class="works uk-child-width-1-3@s uk-child-width-1-3@m uk-child-width-1-3@l uk-text-center uk-grid-small" data-uk-grid="masonry: true">
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/04.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/05.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/06.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/07.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/08.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/09.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/10.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/11.jpg" alt="">
+							
+						</a>
+						
+						<a href="project-style-01.html">
+							
+							<!-- Image -->
+							<img src="images/12.jpg" alt="">
+							
+						</a>
+
+					</div>
+					
+				</div>
+				<!-- End Column -->
+				
+				
+			</div>
+			<!-- End Row -->
+
+		</footer>
+		<!-- End Footer -->
+		
+		
+		
+		
+		<!-- jQuery Library -->
+		<script src="js/jquery.min.js"></script>
+		
+		<!-- Uikit Framework -->
+		<script src="js/uikit.min.js"></script>
+		
+		<!-- Uikit Icons -->
+		<script src="js/uikit-icons.min.js"></script>
+
+		<!-- Bootstrap Framework -->
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Modernizr -->
+		<script src="js/modernizr.js"></script>
+		
+		<!-- Counter -->
+		<script src="js/counter.js"></script>
+		
+		<!-- Font Awesome -->
+		<script src="js/fontawesome.min.js"></script>
+		
+		<!-- Contact Form Validation -->
+		<script src="js/contact.js"></script>
+		
+		
+		
+		
+		
+		
+		
+		<!-- Custom Scripts -->
+		<script src="js/custom.js"></script>
+
+		
+		
+	
+
+</body></html>
