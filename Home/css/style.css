@@ -416,7 +416,7 @@ dl{
     margin-bottom: 0px;
     padding: 18px;
     background: #fff;
-    color: #232323;
+    color: #192b3a;
     font-size: 14px;
 	font-family: 'Manrope', sans-serif;
     font-weight: 500;
@@ -2533,7 +2533,7 @@ h6{
 
 .text-gray-extra-dark{
 
-    color: #232323
+    color: #192b3a
 
 }
 
@@ -3272,7 +3272,7 @@ blockquote{
     line-height: 1;
     margin: 45px 0;
     font-style: normal;
-    color: #232323;
+    color: #192b3a;
 
 }
 
@@ -3374,7 +3374,7 @@ blockquote p{
 
 .bg-gray-extra-dark{
 
-    background-color: #232323 !important
+    background-color: #192b3a !important
 
 }
 
@@ -4452,7 +4452,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
     background: #fff !important;
     border-color: #fff !important;
-    color: #232323 !important
+    color: #192b3a !important
 
 }
 
@@ -4610,7 +4610,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
     background: #c0bfbf;
     border-color: #c0bfbf !important;
-    color: #232323
+    color: #192b3a
 
 }
 
@@ -4641,8 +4641,8 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
 .btn-gray-extra-dark{
 
-    background: #232323 !important;
-    border-color: #232323 !important;
+    background: #192b3a !important;
+    border-color: #192b3a !important;
     color: #fff
 
 }
@@ -4651,7 +4651,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 .btn-gray-extra-dark:focus{
 
     background: transparent!important;
-    color: #232323!important;
+    color: #192b3a!important;
 
 }
 
@@ -4668,7 +4668,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
     background: #ffffff !important;
     border-color: #ffffff !important;
-    color: #232323 !important
+    color: #192b3a !important
 
 }
 
@@ -4702,7 +4702,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
     background: #c0bfbf !important;
     border-color: #c0bfbf !important;
-    color: #232323
+    color: #192b3a
 
 }
 
@@ -4726,16 +4726,16 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 .btn-transparent-gray-extra-dark{
 
     background: transparent !important;
-    border-color: #232323 !important;
-    color: #232323
+    border-color: #192b3a !important;
+    color: #192b3a
 
 }
 
 .btn-transparent-gray-extra-dark:hover,
 .btn-transparent-gray-extra-dark:focus{
 
-    background: #232323 !important;
-    border-color: #232323 !important;
+    background: #192b3a !important;
+    border-color: #192b3a !important;
     color: #ffffff !important;
 
 }
@@ -5507,7 +5507,7 @@ background-image: linear-gradient(to right, #191919 0%, black 100%);
 
 .border-color-gray-extra-dark{
 
-    border-color: #232323
+    border-color: #192b3a
 
 }
 

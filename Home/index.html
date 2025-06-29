@@ -86,13 +86,17 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   background-image: url('../background.jpg'); /* Your path */
-  background-size: cover;
-  background-position: center;
+  background-size: 100% 100%;
+  background-position: 0% 0%;
   background-repeat: no-repeat;	
   z-index: 0;
 }
+@font-face {
+    font-family: 'Sansumi';
+    src: url('../sansumi/Sansumi-Regular.ttf') format('truetype');
+  }
   </style>
 	</head>
 	<!-- End Head -->
@@ -278,13 +282,15 @@ updateImageTransform();
 							<div class="width-80 margin-right-auto sm-margin-left-right-auto">
 			
 								<!-- Titles -->
-								<h1 class="text-weight-800 title-large text-gray-extra-dark" style="font-family: 'Sansumi', sans-serif; color: #f7d2b4;">Turn Simple Ideas Into Extraordinary Reality</h1>
-								<h6 class="text-gray-regular no-margin-bottom"></h6>
-								<h6 class="text-gray-regular text-gold"></h6>
+								<h1 class="text-weight-800 title-large text-gray-extra-dark" style="font-family: 'Sansumi', sans-serif; color: #f7d2b4;">
+  Turn Simple Ideas Into Extraordinary Reality
+</h1>
+<h6 class="text-gray-regular no-margin-bottom"></h6>
+<h6 class="text-gray-regular text-gold"></h6>
 								<!-- End Titles -->
 								
 								<!-- Buttons -->
-								<a class="btn btn-medium btn-gold  no-margin-bottom" href="" data-uk-scroll="" style="color: white;">Learn More</a>
+								<a class="btn btn-medium btn-gold  no-margin-bottom" href="" data-uk-scroll="" style="color: #192b3a;">Learn More</a>
 							
 							</div>
 						
@@ -588,55 +594,84 @@ updateImageTransform();
 
 						<!-- Column -->
 						<div class="col-md-3 col-sm-6 col-xs-12 sm-margin-bottom-75px text-center">
-							
-							<span class="text-gold" data-uk-icon="icon: desktop; ratio: 2"></span>
-							
-							<h6 class="text-center text-gray-extra-dark margin-top-25px">Web Design</h6>
-							
-							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+  
+  <span class="text-gold" data-uk-icon="icon: calendar; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px" style="color: #f7d2b4;">Event Services</h6>
+  
+  <p class="no-margin text-weight-400" style="color: white;">
+    At CJC, we create unforgettable brand experiences through events.
+  </p>
 
-							
-						</div>
+</div>
 						<!-- End Column -->
 						
 						<!-- Column -->
 						<div class="col-md-3 col-sm-6 col-xs-12 sm-margin-bottom-75px text-center">
-							
-							<span class="text-gold" data-uk-icon="icon: camera; ratio: 2"></span>
-							
-							<h6 class="text-center text-gray-extra-dark margin-top-25px">App Design</h6>
-							
-							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+  
+  <span class="text-gold" data-uk-icon="icon: world; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px"style="color: #f7d2b4;">Digital Marketing</h6>
+  
+  <p class="no-margin text-weight-400" style="color: white;">
+    Digital marketing is more than being online—it's about being seen, heard, and remembered.
+  </p>
 
-						</div>
+</div>
 						<!-- End Column -->
 						
 						<!-- Column -->
 						<div class="col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-75px text-center">
-							
-							<span class="text-gold" data-uk-icon="icon: bolt; ratio: 2"></span>
-							
-							<h6 class="text-center text-gray-extra-dark margin-top-25px">iOS Design</h6>
-							
-							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+  
+  <span class="text-gold" data-uk-icon="icon: camera; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px"style="color: #f7d2b4;">Prime Visual Production</h6>
+  
+  <p class="no-margin text-weight-400"style="color: white;">
+    Great marketing needs great visuals. Our production team brings stories to life through photography, video, and animation.
+  </p>
 
-							
-						</div>
+</div>
 						<!-- End Column -->
 						
 						<!-- Column -->
 						<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-							
-							<span class="text-gold" data-uk-icon="icon: image; ratio: 2"></span>
-							
-							<h6 class="text-center text-gray-extra-dark margin-top-25px">Photography</h6>
-							
-							<p class="no-margin text-weight-400">Nulla vitae elit libero elit non porta gravida eget metus cras egestas.</p>
+  
+  <span class="text-gold" data-uk-icon="icon: paint-bucket; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px" style="color: #f7d2b4;">Branding</h6>
+  
+  <p class="no-margin text-weight-400"style="color:white">
+    Your brand is more than a logo—it's how the world sees you. At CJC, we craft identities that reflect your values and resonate with your audience.
+  </p>
 
-							
-						</div>
+</div>
+
 						<!-- End Column -->
-						
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+  
+  <span class="text-gold" data-uk-icon="icon: microphone; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px" style="color:#f7d2b4">PR & Media</h6>
+  
+  <p class="no-margin text-weight-400" style="color: white;">
+    Your story deserves the spotlight. top media outlets across the Middle East to amplify your brand’s presence.
+  </p>
+
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+  
+  <span class="text-gold" data-uk-icon="icon: user; ratio: 2"></span>
+  
+  <h6 class="text-center text-gray-extra-dark margin-top-25px" style="color: #f7d2b4;">Concierge Marketing</h6>
+  
+  <p class="no-margin text-weight-400" style="color: white;">
+    Expanding into a new region? We guide your market entry in the Middle East with hands-on, personalized support.
+  </p>
+
+</div>
+
+
 					</div>
 					<!-- End Row -->
 					
