@@ -13,7 +13,7 @@
 		
 		
 		<!--Start Title -->
-		<title>Popper - Creative Agency and Startup Portfolio Template</title>
+		<title>CJC - Creative Jump Consulting</title>
 		<!--End Title -->
 		
 		
@@ -60,6 +60,58 @@
 	<!-- End Head -->
 	
 
+	 <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; }
+    .background-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+    .rotating-image {
+      width: 300px;
+      height: auto;
+      position: relative;
+	  
+    }
+
+	.loader-img img {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.full-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../bg.jpg'); /* Your path */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;	
+  z-index: 0;
+}
+@font-face {
+  font-family: 'Sansumi';
+  src: url('../sansumi/Sansumi-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Butler';
+  src: url('../butler/Butler/Butler_Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+  </style>
 	
 	<!-- Main Body -->
 	<body>
@@ -74,9 +126,9 @@
 		<div id="loader-wrapper">
 			
 			<!-- Loading Image -->
-			<div class="loader-img"><img src="images/loading-screen.gif" alt=""></div>
+			<div class="loader-img"><img src="../wheel.png" alt=""></div>
 			<!-- END Loading Image -->
-			
+
 			
 			<!-- Loading Screen Split -->
 			<div class="loader-section section-left"></div>
@@ -88,11 +140,11 @@
 		
 		
 
-		<!-- Off-Canvas Navigation -->
+	<!-- Off-Canvas Navigation -->
 		<div id="offcanvas-nav" data-uk-offcanvas="mode: push; overlay: true; esc-close: true; flip: true;">
 		
 			<!-- Off-Canvas Bar -->
-			<div class="uk-offcanvas-bar menu-dark bg-white uk-flex uk-flex-middle">
+			<div class="uk-offcanvas-bar menu-dark bg-gray-transparent uk-flex uk-flex-middle">
 			
 				<div>
 
@@ -103,17 +155,38 @@
 						<!-- Link -->
 						<li class="margin-bottom-10px">
 						
-							<a href="../Home/index.html"><h6 class="text-gray-extra-dark"><span class="text-left text-gray-extra-dark no-margin-bottom text-weight-700">Popper.</span></h6></a>
+							<a href="index.html"><h6 class="text-grey-extra-dark"><span class="text-left text-gold no-margin-bottom text-weight-700" style="color:#e1c7ab ;font-family: 'Butler';">CJC</span></h6></a>					
+							<a href="index.html"><h6 class="text-grey-extra-dark"><span class="text-left text-gold no-margin-bottom text-weight-700" style="color:#e1c7ab ;font-family: 'Butler';">Creative Jump Consulting</span></h6></a>
 
 						</li>
+						
+
+
 						<!-- End Link -->
 
 						
 						<!-- Link -->
+						<li class="uk-parent margin-bottom-10px">
+						
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Home <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							
+							<!-- Dropdown -->
+							<ul class="uk-nav-sub">
+
+								<li><a href="index-style-01.html">Homepage Style 01</a></li>
+								<li><a href="index-style-02.html">Homepage Style 02</a></li>
+		
+							</ul>
+							<!-- End Dropdown -->
+							
+						</li>
+						<!-- End Link -->
+						
+						
+						<!-- Link -->
 						<li class="margin-bottom-10px">
 						
-							<a href="../Home/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Home</span></a>
-							
+							<a href="../about/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">About</span></a>
 							
 							
 						</li>
@@ -123,17 +196,7 @@
 						<!-- Link -->
 						<li class="margin-bottom-10px">
 						
-							<a href="page-about.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">About</span></a>
-							
-							
-						</li>
-						<!-- End Link -->
-						
-						
-						<!-- Link -->
-						<li class="margin-bottom-10px">
-						
-							<a href="page-services.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Services</span></a>
+							<a href="../services/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Services</span></a>
 							
 							
 						</li>
@@ -143,7 +206,7 @@
 						<!-- Link -->
 						<li class="uk-parent margin-bottom-10px">
 						
-							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Portfolio <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Portfolio <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
 							
 							<!-- Dropdown -->
 							<ul class="uk-nav-sub">
@@ -168,16 +231,16 @@
 						<!-- Link -->
 						<li class="uk-parent margin-bottom-10px">
 						
-							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Pages <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Pages <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
 							
 							<!-- Dropdown -->
 							<ul class="uk-nav-sub">
 
-								<li><a class="text-gray-extra-dark text-small" href="page-about.html">About</a></li>
-								<li><a class="text-gray-extra-dark text-small" href="page-services.html">Services</a></li>
-								<li><a class="text-gray-extra-dark text-small" href="page-gallery.html">Gallery</a></li>
-								<li><a class="text-gray-extra-dark text-small" href="page-pricing.html">Pricing</a></li>
-								<li><a class="text-gray-extra-dark text-small" href="page-contact.html">Contact</a></li>
+								<li><a class="text-gold text-small" href="page-about.html">About</a></li>
+								<li><a class="text-gold text-small" href="page-services.html">Services</a></li>
+								<li><a class="text-gold text-small" href="page-gallery.html">Gallery</a></li>
+								<li><a class="text-gold text-small" href="page-pricing.html">Pricing</a></li>
+								<li><a class="text-gold text-small" href="page-contact.html">Contact</a></li>
 		
 							</ul>
 							<!-- End Dropdown -->
@@ -188,7 +251,7 @@
 						<!-- Link -->
 						<li class="margin-bottom-10px">
 						
-							<a href="page-pricing.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Pricing</span></a>
+							<a href="../pricing/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Pricing</span></a>
 							
 							
 						</li>
@@ -197,7 +260,7 @@
 						<!-- Link -->
 						<li class="uk-parent margin-bottom-10px">
 						
-							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Blog <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Blog <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
 							
 							<!-- Dropdown -->
 							<ul class="uk-nav-sub">
@@ -216,7 +279,7 @@
 						<!-- Link -->
 						<li class="margin-bottom-10px">
 						
-							<a href="page-contact.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gray-extra-dark roboto text-weight-400 padding-bottom-20px">Contact</span></a>
+							<a href="../contact/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Contact</span></a>
 
 						</li>
 						<!-- End Link -->
@@ -240,8 +303,8 @@
 						<!-- End Social Links for Off-Canvas Footer -->
 
 						<!-- Copyright Information -->
-						<p class="no-margin-bottom margin-top-20px text-small text-gray-extra-dark text-weight-400">Copyright © 2020 of <a href="https://www.templatemilk.com" target="_blank">templatemilk.</a></p>
-						<p class="no-margin-bottom text-small text-gray-extra-dark text-weight-400 text-black">All rights reserved.</p>
+						<p class="no-margin-bottom margin-top-20px text-small text-gold text-weight-400">Copyright © 2025 of <a href="https://www.meetcjc.com" target="_blank">CJC- Creative Jump Consulting</a></p>
+						<p class="no-margin-bottom text-small text-gold text-weight-400 text-black">All rights reserved.</p>
 						<!-- End Copyright Information -->
 				
 					</div>
@@ -257,7 +320,7 @@
 
 
 		<!-- About -->
-		<div id="about" class="uk-position-relative uk-visible-toggle bg-gold-transparent" data-uk-slider="finite: true">
+		<div id="about" class="uk-position-relative uk-visible-toggle bg-grey-transparent" data-uk-slider="finite: true">
 
 			<!-- Container -->
 			<ul class="uk-slider-items uk-child-width-1-2@m uk-grid uk-grid-small" data-uk-height-viewport="">
@@ -288,22 +351,27 @@
 									<div class="sm-container-spread">
 					
 		
-										<h1 class="text-weight-800 title-large text-gray-extra-dark no-margin-bottom"style="font-family: 'Butler', serif;">About.</h1>
+										<h1 class="text-weight-800 title-large text-gray-extra-dark "style="font-family: 'Butler', serif;">About</h1>
 									
 
-										<h6 class="text-gray-extra-dark no-margin-bottom"style="font-family: 'Butler', serif;">Who are we and</h6>
-										<h6 class="text-gray-extra-dark text-gold"style="font-family: 'Butler', serif;">what do we do?</h6>
+										<h6 class="text-gray-extra-dark no-margin-bottom"style="font-family: 'Butler', serif;">Who We Are?</h6>
+									
 										<!-- End Section Title -->
 										
 					
-										<p class="text-weight-400 text-gray-extra-dark" style="font-family: 'Sansumi'; text-align: justify; text-justify: inter-word;">CJC (Creative Jump Consulting) is not your average marketing agency—we are your creative growth partner. Rooted in Dubai and Riyadh, we are a bold team of thinkers, designers, storytellers, and strategists who transform ordinary brands into unforgettable experiences.
+										<p class="text-weight-600 text-gray-extra-dark" style="font-family: 'Sansumi', sans-serif; text-align: justify; text-justify: inter-word;">CJC (Creative Jump Consulting) is not your average marketing agency—we are your creative growth partner. Rooted in Dubai and Riyadh, we are a bold team of thinkers, designers, storytellers, and strategists who transform ordinary brands into unforgettable experiences.
 
 We believe creativity is not just about visuals—it’s about solving business challenges in imaginative, effective ways. From immersive event experiences to breakthrough digital campaigns, we craft tailored solutions that speak to your audience and move your business forward.
 
 With a deep understanding of the Middle Eastern market and a pulse on global trends, we deliver marketing that’s not only beautiful, but smart, strategic, and results-driven. At CJC, we don’t just follow trends—we create them.
-
-Let’s create something extraordinary together.
 </p>
+<h9 class="text-weight-600 text-gray-extra-dark no-margin-bottom"style="font-family: 'Sansumi', sans-serif;">Let’s create something extraordinary together.</h9>
+
+<li>
+
+</li>
+
+
 									
 
 										<a class="btn btn-medium btn-gray-extra-dark  no-margin-bottom" href="#about" data-uk-scroll="">Read More</a>
@@ -362,9 +430,9 @@ Let’s create something extraordinary together.
 									<div class="sm-container-spread">
 					
 		
-										<h1 class="text-weight-800 title-large text-gray-extra-dark" style="font-family: 'Butler';">Our Mission.</h1>
+										<h1 class="text-weight-800 title-large text-gray-extra-dark" style="font-family: 'Butler';">Our Mission</h1>
 
-										<p class="text-weight-400 text-gray-extra-dark" style=" font-family:'Sansumi'; text-align: justify; text-justify: inter-word;">At Creative Jump Consulting (CJC), our mission is simple:
+										<p class="text-weight-600 text-gray-extra-dark" style=" font-family:'Sansumi'; text-align: justify; text-justify: inter-word;">At Creative Jump Consulting (CJC), our mission is simple:
 To fuel business growth in the Middle East through imaginative, data-driven marketing strategies that connect brands to people in powerful ways.
 
 We believe in delivering more than just services—we deliver bold solutions crafted with insight, innovation, and intent. Whether you're launching, scaling, or repositioning, we're here to help you move forward with clarity and confidence.
@@ -411,25 +479,25 @@ We believe in delivering more than just services—we deliver bold solutions cra
 		
 										<h1 class="text-weight-800 title-large text-gray-light" style="color:white; font-family: 'Butler';">Our Vision</h1>
 
-<p class="text-weight-400 text-gray-regular" style="color:white; font-family: 'Sansumi';text-align: justify; text-justify: inter-word;">
+<p class="text-weight-600 text-gray-regular" style="color:white; font-family: 'Sansumi';text-align: justify; text-justify: inter-word;">
     To become the region’s most trusted creative force—where every campaign, every brand experience, and every digital solution sparks meaningful engagement and measurable success.
 </p>
 
-<h2 class="text-weight-700 title-medium text-gray-light mt-6" style="color:white; font-family: 'Butler';">We Believe</h2>
+<h2 class="text-weight-800 title-large text-gray-light " style="color:white; font-family: 'Butler';">We Believe</h2>
 
-<p class="text-weight-400 text-gray-regular" style="color:white; font-family: 'Sansumi';text-align: justify; text-justify: inter-word;">
+<p class="text-weight-600 text-gray-regular" style="color:white; font-family: 'Sansumi';text-align: justify; text-justify: inter-word;">
     Great marketing isn’t just about visibility—it’s about impact, connection, and lasting value.
 </p>
 
-<p class="text-weight-400 text-gray-regular"style="color:white; font-family: 'Sansumi';">
+<p class="text-weight-600 text-gray-regular"style="color:white; font-family: 'Sansumi';">
     We merge creative strategy, design, and technology to craft brand experiences that drive results. From digital campaigns to event activations, every solution we create is tailored, purposeful, and performance-driven.
 </p>
 
-<p class="text-weight-400 text-gray-regular"style="color:white; font-family: 'Sansumi';">
+<p class="text-weight-600 text-gray-regular"style="color:white; font-family: 'Sansumi';">
     We believe in the power of bold ideas, clear messaging, and meaningful engagement—online and offline.
 </p>
 
-<p class="text-weight-400 text-gray-regular"style="color:white; font-family: 'Sansumi';">
+<p class="text-weight-600 text-gray-regular"style="color:white; font-family: 'Sansumi';">
     At CJC, we don’t just market your brand—we make it unforgettable.
 </p>
 									
