@@ -69,18 +69,7 @@
 	  
     }
 
-	.loader-img img {
-  animation: rotate 2s linear infinite;
-}
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .full-bg {
   position: fixed;
   top: 0;
@@ -119,20 +108,43 @@
   gap: 30px; /* optional, to keep spacing consistent */
 }
 #loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;  /* Use viewport width */
-  height: 100vh; /* Use viewport height */
-  background-image: url('../bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 9999;
+    position: fixed;
+    inset: 0;
+    background-image: url('../bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+  }
+
+  .loader-img-wrapper img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+	
+  }
+.loader-img-wrapper img:last-child {
+  transform: scale(3.3); /* Make 'loading.png' 30% larger visually */
 }
-.loader-img, .loader-section {
-  background: transparent !important;
-}
+  .rotate {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
   </style>
 	</head>
 	<!-- End Head -->
@@ -284,11 +296,10 @@ updateImageTransform();
 		
 		<!-- Loading Screen -->
 		<div id="loader-wrapper">
-  <!-- Loading Image -->
-  <div class="loader-img"><img src="../wheel.png" alt=""></div>
-  <!-- Loading Screen Split -->
-  <div class="loader-section section-left"></div>
-  <div class="loader-section section-right"></div>
+  <div class="loader-img-wrapper">
+    <img src="../wheel.png" alt="wheel" class="rotate" />
+    <img src="../loading.png" alt="loading"/>
+  </div>
 </div>
 		<!-- End Loading Screen -->
 		
