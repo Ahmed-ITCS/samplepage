@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services Grid - 5 Per Row</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+      font-family: 'Sansumi', sans-serif;
+    }
+
+    .services-section {
+      padding: 100px 30px;
+    }
+
+    .services-title {
+      text-align: center;
+      font-size: 40px;
+      font-family: 'Sansumi', sans-serif;
+      color: #e1c7ab;
+      margin-bottom: 60px;
+    }
+
+    .services-griddd {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+    }
+
+    .services-griddd > div {
+      background: transparent;
+      text-align: center;
+      color: white;
+      padding: 10px;
+      font-family: 'Sansumi', sans-serif;
+    }
+
+    .services-griddd span {
+      font-size: 32px;
+    }
+
+    .services-griddd h6 {
+      color: #f7d2b4;
+      font-family: 'Butler', serif;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .services-griddd p {
+      font-size: 14px;
+      line-height: 1.5em;
+      color: #eee;
+      margin-top: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .services-griddd {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .services-griddd {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .services-griddd {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-griddd {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="services-section">
+    <h1 class="services-title">Services</h1>
+
+    <div class="services-griddd">
+      <div>
+        <span>📅</span>
+        <h6>Event Services</h6>
+        <p>We create unforgettable brand experiences through events.</p>
+      </div>
+
+      <div>
+        <span>🌐</span>
+        <h6>Digital Marketing</h6>
+        <p>It’s about being seen, heard, and remembered online.</p>
+      </div>
+
+      <div>
+        <span>📸</span>
+        <h6>Visual Production</h6>
+        <p>We bring stories to life with photos, videos, and animations.</p>
+      </div>
+
+      <div>
+        <span>🎨</span>
+        <h6>Branding</h6>
+        <p>We craft identities that reflect your values and resonate.</p>
+      </div>
+
+      <div>
+        <span>💻</span>
+        <h6>3D Web Development</h6>
+        <p>Interactive websites that impress at first glance.</p>
+      </div>
+
+      <div>
+        <span>🎤</span>
+        <h6>PR & Media</h6>
+        <p>Amplify your story through top media channels.</p>
+      </div>
+
+      <div>
+        <span>🛎️</span>
+        <h6>Concierge Marketing</h6>
+        <p>Market entry support tailored for the Middle East.</p>
+      </div>
+
+      <div>
+        <span>👂</span>
+        <h6>Reputation Management</h6>
+        <p>Monitor, track sentiment, and protect your brand online.</p>
+      </div>
+
+      <div>
+        <span>📱</span>
+        <h6>Social Media Marketing</h6>
+        <p>From content creation to paid campaigns that deliver ROI.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
