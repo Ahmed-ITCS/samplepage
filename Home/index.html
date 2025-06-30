@@ -118,6 +118,21 @@
   justify-content: center;
   gap: 30px; /* optional, to keep spacing consistent */
 }
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;  /* Use viewport width */
+  height: 100vh; /* Use viewport height */
+  background-image: url('../bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 9999;
+}
+.loader-img, .loader-section {
+  background: transparent !important;
+}
   </style>
 	</head>
 	<!-- End Head -->
@@ -269,18 +284,12 @@ updateImageTransform();
 		
 		<!-- Loading Screen -->
 		<div id="loader-wrapper">
-			
-			<!-- Loading Image -->
-			<div class="loader-img"><img src="../wheel.png" alt=""></div>
-			<!-- END Loading Image -->
-			
-			
-			<!-- Loading Screen Split -->
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-			<!-- End Loading Screen Split -->
-			
-		</div> 
+  <!-- Loading Image -->
+  <div class="loader-img"><img src="../wheel.png" alt=""></div>
+  <!-- Loading Screen Split -->
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div>
 		<!-- End Loading Screen -->
 		
 		
