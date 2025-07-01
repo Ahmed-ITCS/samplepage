@@ -145,6 +145,35 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  .client-logo {
+  width: 100%; /* Increase or use % if you want responsive scaling */
+  max-width: 100%;
+  height: auto;
+}
+footer{
+	  position: relative;
+  z-index: 1; /* just to create stacking context */
+  background-color: rgba(255, 255, 255, 0.1)!important; /* solid red */
+
+}
+#facts {
+  position: relative;
+  z-index: 1; /* just to create stacking context */
+  background-color: rgba(255, 255, 255, 0.1)!important; /* solid red */
+
+}
+
+.solid-bg {
+  position: relative;
+  
+  z-index: 10; /* above most things */
+  width: 100%;
+  min-height: 100%; /* make sure it covers the height */
+  box-sizing: border-box;
+  padding: 150px 0; /* whatever padding you want */
+  /* Add this if parent has some transparency */
+  opacity: 1 !important;
+}
   </style>
 	</head>
 	<!-- End Head -->
@@ -1230,8 +1259,8 @@ updateImageTransform();
 		
 		
 		<!-- Facts -->
-		<div id="facts" class="bg-gray-transparent padding-top-bottom-150px">
-		
+		<div id="facts" class="bg-gray-transparentt padding-top-bottom-150px">
+			<div class="solid-bg">
 			<!-- Row -->
 			<div class="row">
 				
@@ -1251,11 +1280,11 @@ updateImageTransform();
 								<div class="counter text-center">
 
 
-									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="444">0</h1>
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="444" style="color: #f7d2b4;">0</h1>
 									
 									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: thumbnails; ratio: 2"></span>
 									
-									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Projects</h6>
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom" style="color: #ffff;">Projects</h6>
 									
 								</div>
 								<!-- End Counter -->
@@ -1270,11 +1299,11 @@ updateImageTransform();
 								<!-- Counter -->
 								<div class="counter text-center">
 						
-									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="379">0</h1>
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="379" style="color: #f7d2b4;">0</h1>
 									
 									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: user; ratio: 2"></span>
 									
-									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Clients</h6>
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom"style="color: #ffff;">Clients</h6>
 									
 								</div>
 								<!-- End Counter -->
@@ -1289,11 +1318,11 @@ updateImageTransform();
 								<!-- Counter -->
 								<div class="counter text-center">
 						
-									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="235">0</h1>
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="235" style="color: #f7d2b4;">0</h1>
 									
 									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: image; ratio: 2"></span>
 									
-									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Designs</h6>
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom"style="color: #ffff;">Designs</h6>
 									
 								</div>
 								<!-- End Counter -->
@@ -1308,11 +1337,11 @@ updateImageTransform();
 								<!-- Counter -->
 								<div class="counter text-center">
 						
-									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="20">0</h1>
+									<h1 class="counter-value text-weight-800 title-large text-gray-extra-dark" data-count="20" style="color: #f7d2b4;">0</h1>
 									
 									<span class="text-gray-extra-dark margin-top-10px margin-bottom-15px" data-uk-icon="icon: star; ratio: 2"></span>
 									
-									<h6 class="text-center text-gray-extra-dark no-margin-bottom">Awards</h6>
+									<h6 class="text-center text-gray-extra-dark no-margin-bottom" style="color: #ffff;">Awards</h6>
 									
 								</div>
 								<!-- End Counter -->
@@ -1332,7 +1361,7 @@ updateImageTransform();
 
 			</div>
 			<!-- End Row -->
-			
+			</div>
 		</div>
 		<!-- End Facts -->
 		
@@ -1362,74 +1391,68 @@ updateImageTransform();
 						
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
 							
-								<img class="opacity-8 width-70 md-margin-left-right-auto" src="images/01.png" alt="">
+								<img class="client-logo opacity-8 width-70 md-margin-left-right-auto" src="images/01.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
 							
-								<img class="width-70 md-margin-left-right-auto" src="images/02.png" alt="">
+								<img class="client-logo width-70 md-margin-left-right-auto" src="images/02.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
 							
-								<img class="opacity-8 width-70 md-margin-left-right-auto" src="images/03.png" alt="">
+								<img class="client-logo opacity-8 width-70 md-margin-left-right-auto" src="images/03.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col margin-bottom-75px">
 							
-								<img class="width-70 md-margin-left-right-auto" src="images/04.png" alt="">
+								<img class="client-logo width-70 md-margin-left-right-auto" src="images/04.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
 							
-								<img class="opacity-8 width-70 md-margin-left-right-auto" src="images/05.png" alt="">
+								<img class="client-logo opacity-8 width-70 md-margin-left-right-auto" src="images/05.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
 							
-								<img class="width-70 md-margin-left-right-auto" src="images/06.png" alt="">
+								<img class="client-logo width-70 md-margin-left-right-auto" src="images/06.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col sm-margin-bottom-75px">
 							
-								<img class="width-70 md-margin-left-right-auto" src="images/07.png" alt="">
+								<img class="client-logo width-70 md-margin-left-right-auto" src="images/07.png" alt="">
 							
 							</div>
 							
 							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
 							
-								<img class="width-70 md-margin-left-right-auto" src="images/08.png" alt="">
+								<img class="client-logo width-70 md-margin-left-right-auto" src="images/08.png" alt="">
 							
 							</div>
 						
 							</div>
-							
-							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
-							
-								<img class="width-70 md-margin-left-right-auto" src="images/09.png" alt="">
-							
-							</div>
+							<br><br>
+							<!-- New Row wrapping last 3 client logos -->
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
+    <img class="client-logo width-70 md-margin-left-right-auto" src="images/09.png" alt="">
+  </div>
 
-						</div>
-							
-							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
-							
-								<img class="width-70 md-margin-left-right-auto" src="images/010.png" alt="">
-							
-							</div>
+  <div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
+    <img class="client-logo width-70 md-margin-left-right-auto" src="images/10.png" alt="">
+  </div>
 
-							<div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
-							
-								<img class="width-70 md-margin-left-right-auto" src="images/011.png" alt="">
-							
-							</div>
-					
+  <div class="col-lg-3 col-md-6 col-sm-12 center-col md-margin-bottom-75px">
+    <img class="client-logo width-70 md-margin-left-right-auto" src="images/11.png" alt="">
+  </div>
+</div>
 						</div>
 						<!-- End Row -->
 
@@ -2057,7 +2080,8 @@ updateImageTransform();
 		
 		
 		<!-- Footer -->
-		<footer class="bg-gray-transparent">
+		<footer id="footer" class="bg-gray-transparent">
+			<div class="solid-bg">
 		
 			
 			<!-- Row -->
@@ -2220,7 +2244,7 @@ updateImageTransform();
 				
 			</div>
 			<!-- End Row -->
-
+			</div>
 		</footer>
 		<!-- End Footer -->
 		

@@ -111,6 +111,44 @@
   font-weight: normal;
   font-style: normal;
 }
+#loader-wrapper {
+    position: fixed;
+    inset: 0;
+    background-image: url('../bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+  }
+
+  .loader-img-wrapper img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+	
+  }
+.loader-img-wrapper img:last-child {
+  transform: scale(3.3); /* Make 'loading.png' 30% larger visually */
+}
+  .rotate {
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
   </style>
 
 	<!-- Main Body -->
@@ -125,18 +163,11 @@
 		
 		<!-- Loading Screen -->
 		<div id="loader-wrapper">
-			
-			<!-- Loading Image -->
-			<div class="loader-img"><img src="../wheel.png" alt=""></div>
-			<!-- END Loading Image -->
-
-			
-			<!-- Loading Screen Split -->
-			<div class="loader-section section-left"></div>
-            <div class="loader-section section-right"></div>
-			<!-- End Loading Screen Split -->
-			
-		</div> 
+  <div class="loader-img-wrapper">
+    <img src="../wheel.png" alt="wheel" class="rotate" />
+    <img src="../loading.png" alt="loading"/>
+  </div>
+</div>
 		<!-- End Loading Screen -->
 		
 		
@@ -157,7 +188,7 @@
 						<li class="margin-bottom-10px">
 						
 							<a href="index.html"><h6 class="text-gray-extra-dark"><span class="text-left text-gold no-margin-bottom text-weight-700" style="color:#e1c7ab ;font-family: 'Butler';">CJC</span></h6></a>					
-							<a href="index.html"><h6 class="text-gray-extra-dark"><span class="text-left text-gold no-margin-bottom text-weight-700" style="color:#e1c7ab ;font-family: 'Butler';">Creative Jump Consulting</span></h6></a>
+							<a href="index.html"><h6 class="text-gray-extra-dark"><span class="text-left text-gold text-weight-700" style="color:#e1c7ab ;font-family: 'Butler';">Creative Jump Consulting</span></h6></a>
 
 						</li>
 						
@@ -167,18 +198,10 @@
 
 						
 						<!-- Link -->
-						<li class="uk-parent margin-bottom-10px">
+						<li class="margin-bottom-10px">
 						
-							<a href="#" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Home <span class="text-gold" data-uk-icon="icon: chevron-down; ratio: .8"></span></span></a>
+							<a href="../Home/index.html" class="bottom-border border-1px border-color-gray-extra-light"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Home</span></a>
 							
-							<!-- Dropdown -->
-							<ul class="uk-nav-sub">
-
-								<li><a href="index-style-01.html">Homepage Style 01</a></li>
-								<li><a href="index-style-02.html">Homepage Style 02</a></li>
-		
-							</ul>
-							<!-- End Dropdown -->
 							
 						</li>
 						<!-- End Link -->
