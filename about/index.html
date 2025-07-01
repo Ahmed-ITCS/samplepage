@@ -149,6 +149,12 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  footer{
+	  position: relative;
+  z-index: 1; /* just to create stacking context */
+  background-color: rgba(255, 255, 255, 0.1)!important; /* solid red */
+
+}
   </style>
 
 	<!-- Main Body -->
@@ -617,26 +623,33 @@ p {
     font-size: 1.5rem;
   }
 }
+.content-on-bg {
+  position: relative; /* create stacking context */
+  z-index: 1;         /* above .full-bg */
+  padding: 100px 20px; /* spacing */
+  color: white;       /* so text is readable */
+}
 </style>
-<h1 class="text-weight-800 title-large text-gray-extra-dark" style="background-color:">Why Us?</h1>
+<div class="content-on-bg">
+<h1 class="text-weight-800 title-large text-gray-extra-dark" style="color: #f7d2b4;font-family: 'Sansumi';">Why Us?</h1>
 
-<p class="text-weight-400 text-gray-extra-dark">
+<p class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4;font-family: 'Sansumi';">
     Choosing the right marketing partner can transform your brand—and that’s exactly what we do at CJC (Creative Jump Consulting).
 </p>
 
-<p class="text-weight-400 text-gray-extra-dark">
+<p class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4;font-family: 'Sansumi';">
     We’re not just another agency. We’re a creative marketing studio based in Dubai and Riyadh, operating at the intersection of branding, digital marketing, event management, visual production, and PR. Our strength lies in delivering full-spectrum marketing solutions that are creative, strategic, and results-driven.
 </p>
 
-<p class="text-weight-400 text-gray-extra-dark">
+<p class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4;font-family: 'Sansumi';">
     Whether you're launching a new product, entering a new market, or elevating your brand identity, we bring deep regional expertise, creative innovation, and data-backed execution to every project. We’re fast, flexible, and committed to driving real business outcomes.
 </p>
 
-<p class="text-weight-400 text-gray-extra-dark">
+<p class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4;font-family: 'Sansumi';">
     Clients choose CJC because we offer:
 </p>
 
-<ul class="text-weight-400 text-gray-extra-dark">
+<ul class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4;font-family: 'Sansumi';">
     <li>End-to-end marketing support—from concept to execution</li>
     <li>A team that blends creative storytelling with business strategy</li>
     <li>Experience across both B2B and B2C sectors in the Middle East</li>
@@ -644,14 +657,15 @@ p {
     <li>A personalized approach that treats your goals as our own</li>
 </ul>
 
-<p class="text-weight-400 text-gray-extra-dark">
+<p class="text-weight-400 text-gray-extra-dark"style="color: #f7d2b4; font-family: 'Sansumi';">
     With CJC, you're not just hiring a service—you’re gaining a long-term partner invested in your success.
 </p>
+</div>
 		
 		
 		
 		<!-- Footer -->
-		<footer class="bg-gray-extra-light">
+		<footer id="footer" class="bg-gray-extra-light">
 		
 			
 			<!-- Row -->
