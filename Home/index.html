@@ -173,6 +173,27 @@ footer{
   padding: 150px 0; /* whatever padding you want */
   /* Add this if parent has some transparency */
   opacity: 1 !important;
+}.category-scroll {
+	display: flex;
+	flex-wrap: wrap; /* enables wrapping */
+	gap: 20px;
+}
+.category-scroll a {
+	flex: 1 1 calc(33.333% - 20px); /* three items per row (adjustable) */
+	max-width: calc(33.333% - 20px);
+	box-sizing: border-box;
+}
+@media (max-width: 768px) {
+	.category-scroll a {
+		flex: 1 1 calc(50% - 20px); /* two items per row on tablets */
+		max-width: calc(50% - 20px);
+	}
+}
+@media (max-width: 480px) {
+	.category-scroll a {
+		flex: 1 1 100%; /* one item per row on mobile */
+		max-width: 100%;
+	}
 }
   </style>
 	</head>
@@ -849,10 +870,7 @@ updateImageTransform();
 				<!-- Portfolio Grid -->
 <div data-uk-filter="target: .works">
 
-	<!-- Container -->
 	<div class="container">
-
-		<!-- Filter -->
 		<ul class="uk-subnav filter-style-2">
 			<li class="uk-active" data-uk-filter-control=""><a href="#"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">All</span></a></li>
 			<li data-uk-filter-control="filter: .creative-design"><a href="#"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Creative Design</span></a></li>
@@ -861,18 +879,14 @@ updateImageTransform();
 			<li data-uk-filter-control="filter: .modern-website-development"><a href="#"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">Modern Website Development</span></a></li>
 			<li data-uk-filter-control="filter: .pr-media-buying"><a href="#"><span class="text-small text-gold roboto text-weight-400 padding-bottom-20px">PR & Media Buying</span></a></li>
 		</ul>
-		<!-- End Filter -->
-
 	</div>
 
-	<!-- Work -->
 	<div data-uk-lightbox="animation: fade; delay-controls: 999999999">
+		<div class="works">
 
-		<div class="works uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-text-center uk-grid-small" data-uk-grid="">
-
-			<!-- Example Work -->
-			<div class="creative-design">
-				<a href="images/works/01.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+			<!-- Creative Design -->
+			<div class="creative-design category-scroll">
+				<a href="images/01.jpg" class="uk-inline-clip uk-transition-toggle" data-caption="Creative Design">
 					<img src="images/01.jpg" alt="">
 					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
 						<div class="uk-position-center width-50 margin-auto text-center">
@@ -883,9 +897,56 @@ updateImageTransform();
 				</a>
 			</div>
 
-			<div class="event-services">
-				<a href="images/02.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
-					<img src="images/02_1.jpg" alt="">
+			<!-- Event Services -->
+			<div class="event-services category-scroll">
+				<a href="images/01.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/01.jpeg" alt="">
+					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+						<div class="uk-position-center width-50 margin-auto text-center">
+							<h6 class="text-gray-extra-dark">Ofcord</h6>
+							<p class="no-margin-bottom text-weight-400">Event Services Project</p>
+						</div>
+					</div>
+				</a>
+
+				<a href="images/02.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/02.jpeg" alt="">
+					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+						<div class="uk-position-center width-50 margin-auto text-center">
+							<h6 class="text-gray-extra-dark">Ofcord</h6>
+							<p class="no-margin-bottom text-weight-400">Event Services Project</p>
+						</div>
+					</div>
+				</a>
+				<a href="images/stand.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/stand.jpeg" alt="">
+					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+						<div class="uk-position-center width-50 margin-auto text-center">
+							<h6 class="text-gray-extra-dark">Ofcord</h6>
+							<p class="no-margin-bottom text-weight-400">Event Services Project</p>
+						</div>
+					</div>
+				</a>
+				<a href="images/stand1.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/stand1.jpeg" alt="">
+					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+						<div class="uk-position-center width-50 margin-auto text-center">
+							<h6 class="text-gray-extra-dark">Ofcord</h6>
+							<p class="no-margin-bottom text-weight-400">Event Services Project</p>
+						</div>
+					</div>
+				</a>
+				<a href="images/stand2.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/stand2.jpeg" alt="">
+					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
+						<div class="uk-position-center width-50 margin-auto text-center">
+							<h6 class="text-gray-extra-dark">Ofcord</h6>
+							<p class="no-margin-bottom text-weight-400">Event Services Project</p>
+						</div>
+					</div>
+				</a>
+				<a href="images/stand3.jpeg" class="uk-inline-clip uk-transition-toggle" data-caption="Event Services">
+					<img src="images/stand3.jpeg" alt="">
 					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
 						<div class="uk-position-center width-50 margin-auto text-center">
 							<h6 class="text-gray-extra-dark">Ofcord</h6>
@@ -895,8 +956,9 @@ updateImageTransform();
 				</a>
 			</div>
 
-			<div class="primal-video-production">
-				<a href="https://www.templatemilk.com/presentations/videos/01.mp4" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+			<!-- Primal Video Production -->
+			<div class="primal-video-production category-scroll">
+				<a href="https://www.templatemilk.com/presentations/videos/01.mp4" class="uk-inline-clip uk-transition-toggle" data-caption="Primal Video">
 					<img src="images/06.jpg" alt="">
 					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
 						<div class="uk-position-center width-50 margin-auto text-center">
@@ -907,8 +969,9 @@ updateImageTransform();
 				</a>
 			</div>
 
-			<div class="modern-website-development">
-				<a href="project-style-01.html" class="uk-inline-clip uk-transition-toggle" tabindex="0">
+			<!-- Modern Website Development -->
+			<div class="modern-website-development category-scroll">
+				<a href="project-style-01.html" class="uk-inline-clip uk-transition-toggle">
 					<img src="images/04.jpg" alt="">
 					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
 						<div class="uk-position-center width-50 margin-auto text-center">
@@ -919,8 +982,9 @@ updateImageTransform();
 				</a>
 			</div>
 
-			<div class="pr-media-buying">
-				<a href="images/13.jpg" class="uk-inline-clip uk-transition-toggle" tabindex="0" data-caption="This is a caption.">
+			<!-- PR & Media Buying -->
+			<div class="pr-media-buying category-scroll">
+				<a href="images/13.jpg" class="uk-inline-clip uk-transition-toggle" data-caption="PR & Media">
 					<img src="images/13.jpg" alt="">
 					<div class="uk-transition-scale-up uk-position-bottom bg-white height-100">
 						<div class="uk-position-center width-50 margin-auto text-center">
@@ -931,12 +995,10 @@ updateImageTransform();
 				</a>
 			</div>
 
-			<!-- Add more items with appropriate filter class -->
 		</div>
-
 	</div>
-
 </div>
+
 
 			</div>
 			<!-- End Container -->
